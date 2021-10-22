@@ -8,6 +8,6 @@ urlpatterns = [
     path('select', views.select, name='select'),
     path('submit', views.submit, name='submit'),
     path('result', views.result, name='result'),
-    path('like', views.index, name='like'),
-    path('dislike', views.index, name='dislike'),
+    path('like', views.like, name='like'),
+    path('dislike', views.dislike, name='dislike'),
 ]

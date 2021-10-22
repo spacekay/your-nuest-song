@@ -138,4 +138,4 @@ dmypy.json
 cython_debug/
 
 # secret
-secret.json
+yournuestsong/secret.json
