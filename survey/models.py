@@ -51,7 +51,7 @@ class ResultSong(models.Model):
 class Parameter(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_id = models.ForeignKey(Choice, on_delete=models.CASCADE)
-e_i_para = models.IntegerField(default=0)
+    e_i_para = models.IntegerField(default=0)
     n_s_para = models.IntegerField(default=0)
     f_t_para = models.IntegerField(default=0)
     p_j_para = models.IntegerField(default=0)
