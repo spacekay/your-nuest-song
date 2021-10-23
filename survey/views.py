@@ -1,8 +1,17 @@
+from django.http import HttpResponse
 from django.shortcuts import render
+from django.template import loader
 
-# Create your views here.
-def index():
-    return None
+from .models import Question
+from .models import Choice
+from .models import Song
+from .models import Result
+from .models import ResultSong
+from .models import Parameter
+
+
+def index(request):
+    return render(request, 'index.html')
 
 
 def questions():
