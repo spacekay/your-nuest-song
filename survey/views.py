@@ -11,7 +11,7 @@ from .models import Parameter
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index1.html')
 
 
 def questions():
