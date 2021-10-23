@@ -14,8 +14,15 @@ def index(request):
     return render(request, 'index.html')
 
 
-def questions():
-    return None
+def get_parameter(request, param):
+    data = {
+        'no': param,
+    }
+    return render(request, 'survey/question.html', data)
+
+
+def questions(request):
+    return render(request, 'survey/question.html')
 
 
 def select():
@@ -26,8 +33,8 @@ def submit():
     return None
 
 
-def result():
-    return None
+def result(request):
+    return render(request, 'survey/result.html')
 
 
 def like():
@@ -36,3 +43,5 @@ def like():
 
 def dislike():
     return None
+
+
