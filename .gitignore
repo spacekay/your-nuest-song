@@ -140,5 +140,5 @@ cython_debug/
 # secret
 secret.json
 
-#css file
-survey/static/css/style.css
+#css file(preset for 3rd party template)
+style.css

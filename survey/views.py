@@ -21,8 +21,14 @@ def get_parameter(request, param):
     return render(request, 'survey/question.html', data)
 
 
-def questions(request):
-    return render(request, 'survey/question.html')
+def questions(request, qid):
+    question = Question.objects.get(question_id=qid)
+    choice_list = Choice.objects.filter(question_id=qid)
+    context = {
+        'question': question,
+        'choices': choice_list,
+    }
+    return render(request, 'survey/question.html', context)
 
 
 def select():
