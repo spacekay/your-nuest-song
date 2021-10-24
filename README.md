@@ -1,6 +1,6 @@
 # your-nuest-song
 
-개인 토이프로젝트 #1
+## spacekay personal toy project No.1
 
 간단한 설문조사를 통해 사용자의 취향에 맞을 법한 가수의 노래를 추천하는 사이트.
 
