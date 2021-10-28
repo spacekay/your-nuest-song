@@ -1,5 +1,7 @@
+import json
+
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
 from .models import Question
@@ -16,7 +18,7 @@ def index(request):
 
 def get_parameter(request, param):
     data = {
-        'no': param,
+        'cid': param,
     }
     return render(request, 'survey/question.html', data)
 
@@ -35,8 +37,13 @@ def select():
     return None
 
 
-def submit():
-    return None
+def choice(request, param):
+    cid = param[len(param)-1:]
+    qid = param[0:len(param)-1]
+    question = Question.objects.get(question_id=qid)
+    parameter = Parameter.objects.get(choice_id=cid)
+    url = 'survey/question'+(qid+1)
+    return HttpResponse(request, url)
 
 
 def result(request):
@@ -49,5 +56,4 @@ def like():
 
 def dislike():
     return None
-
 
