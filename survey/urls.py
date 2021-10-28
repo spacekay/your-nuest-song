@@ -9,6 +9,6 @@ urlpatterns = [
     path('result', views.result, name='result'),
     path('like', views.like, name='like'),
     path('dislike', views.dislike, name='dislike'),
-    path('<str:param>/', views.get_parameter)
+    path('<str:param>/', views.get_parameter),
     path('choice/<str:param>', views.choice, name='choice')
 ]
