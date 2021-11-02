@@ -1,6 +1,6 @@
 import json
 
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.template import loader
 
@@ -9,7 +9,7 @@ from .models import Choice
 from .models import Song
 from .models import Result
 from .models import ResultSong
-from .models import Parameter
+from .models import Case
 
 
 def index(request):
@@ -37,13 +37,16 @@ def select():
     return None
 
 
-def choice(request, param):
-    cid = param[len(param)-1:]
-    qid = param[0:len(param)-1]
-    question = Question.objects.get(question_id=qid)
-    parameter = Parameter.objects.get(choice_id=cid)
-    url = 'survey/question'+(qid+1)
-    return HttpResponse(request, url)
+def choice(request):
+    cid = request.POST.get("cid")
+    print(cid)
+    choice_result = cid[len(cid)-1:]
+    cid = cid[0:len(cid)-1]
+    print(choice_result, cid)
+
+
+    url = ""
+    return HttpResponseRedirect(url)
 
 
 def result(request):

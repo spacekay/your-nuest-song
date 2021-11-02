@@ -13,6 +13,10 @@ class Choice(models.Model):
     question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_id = models.CharField(max_length=50)
     choice_text = models.CharField(max_length=200)
+    e_i_para = models.IntegerField(default=0)
+    n_s_para = models.IntegerField(default=0)
+    f_t_para = models.IntegerField(default=0)
+    p_j_para = models.IntegerField(default=0)
 
     def __str__(self):
         return self.choice_text
@@ -46,14 +50,12 @@ class ResultSong(models.Model):
     priority = models.IntegerField(default=1)
 
     def __str__(self):
-        return "SONG: "+self.song_id+" RESULT: "+self.result_id
+        return "SONG: "+str(self.song_id)+" RESULT: "+str(self.result_id)
 
 
-class Parameter(models.Model):
-    question_id = models.ForeignKey(Question, on_delete=models.CASCADE)
-    choice_id = models.ForeignKey(Choice, on_delete=models.CASCADE)
-    e_i_para = models.IntegerField(default=0)
-    n_s_para = models.IntegerField(default=0)
-    f_t_para = models.IntegerField(default=0)
-    p_j_para = models.IntegerField(default=0)
-
+class Case(models.Model):
+    case_id = models.AutoField(primary_key=True)
+    e_i_para = models.IntegerField(default=50)
+    n_s_para = models.IntegerField(default=50)
+    f_t_para = models.IntegerField(default=50)
+    p_j_para = models.IntegerField(default=50)
