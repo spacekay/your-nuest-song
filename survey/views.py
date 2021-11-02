@@ -41,12 +41,13 @@ def choice(request):
     cid = request.POST.get("cid")
     print(cid)
     choice_result = cid[len(cid)-1:]
-    cid = cid[0:len(cid)-1]
-    print(choice_result, cid)
-
-
-    url = ""
-    return HttpResponseRedirect(url)
+    qid = int(cid[0:len(cid)-1])+1
+    print(choice_result, qid)
+    url = "questions/"+str(qid)
+    if qid == 3:
+        return HttpResponseRedirect('result')
+    else:
+        return HttpResponseRedirect(url)
 
 
 def result(request):
