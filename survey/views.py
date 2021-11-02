@@ -2,7 +2,7 @@ import json
 
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.template import loader
+from django.template import loader, RequestContext
 
 from .models import Question
 from .models import Choice
@@ -13,19 +13,22 @@ from .models import Case
 
 
 def index(request):
+    # case = Case.objects.create()
     return render(request, 'index.html')
 
 
-def get_parameter(request, param):
-    data = {
-        'cid': param,
-    }
-    return render(request, 'survey/question.html', data)
+#def get_parameter(request, param):
+#    data = {
+#        'cid': param,
+#    }
+#    return render(request, 'survey/question.html', data)
 
 
 def questions(request, qid):
     question = Question.objects.get(question_id=qid)
     choice_list = Choice.objects.filter(question_id=qid)
+    # case = request.GET.get('cid')
+    # print(case)
     context = {
         'question': question,
         'choices': choice_list,
@@ -43,6 +46,7 @@ def choice(request):
     choice_result = cid[len(cid)-1:]
     qid = int(cid[0:len(cid)-1])+1
     print(choice_result, qid)
+    # print(request['case'].case_id)
     url = "questions/"+str(qid)
     if qid == 3:
         return HttpResponseRedirect('result')
