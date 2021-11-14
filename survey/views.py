@@ -80,6 +80,7 @@ def result(request):
     context = {
         'result': your_result,
         'your_song': your_song,
+        'case': this_case,
     }
     return render(request, 'survey/result.html', context)
 

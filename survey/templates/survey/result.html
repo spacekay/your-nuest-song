@@ -29,11 +29,6 @@
             -webkit-user-select:none;
             user-select:none;
             }
-            .video-container {
-              position: relative;
-              width: 100%;
-              height: 40%;
-            }
             iframe {
               z-index: 1;
               width: 100%;
@@ -48,21 +43,27 @@
                 <div class="row gx-4 gx-lg-5">
                     <div class="col-lg-6">
                         <h2 class="mt-5"><br> {{result.result_title}}</h2>
+                        <br>
                         {% for song in your_song %}
                         <br>
                         <iframe src="https://www.youtube.com/embed/{{song.song_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <br>
                         {% endfor %}
                         <p style="line-height:150%;">{{result.result_content|linebreaks}}</p>
-                        <br>
                         <div style="text-align:center">
                             결과가 마음에 드셨나요? <br><br>
-                        <div style="display:inline-block;font-size:1.3em;">
-                            <form action="../choice" method="post">
+                        <div style="display:block;font-size:1.3em;padding-bottom:50px;">
+                            <form action="../like/{{result.result_id}}" method="post" style="display:inline-block">
                                 {% csrf_token %}
-                                <input type="hidden" name="like" value="만족하셨나요" />
+                                <input type="hidden" name="like" value="{{case.result_id}}" />
                             <button type="submit" class="btn btn-outline-dark"><strong>
                                 YES
+                            </strong></button></form>&nbsp;&nbsp;&nbsp;
+                             <form action="../dislike/{{result.result_id}}" method="post" style="display:inline-block">
+                                {% csrf_token %}
+                                <input type="hidden" name="like" value="{{case.result_id}}" />
+                                <button type="submit" class="btn btn-outline-dark"><strong>
+                                NO
                             </strong></button>&nbsp;
                             <br></form>
                         </div>
