@@ -25,7 +25,7 @@ class Choice(models.Model):
 class Result(models.Model):
     result_id = models.AutoField(primary_key=True)
     result_title = models.CharField(max_length=200)
-    result_content = models.CharField(max_length=3000)
+    result_content = models.TextField(max_length=3000, verbose_name='Description')
     result_like = models.IntegerField(default=0)
     result_dislike = models.IntegerField(default=0)
 
@@ -56,6 +56,5 @@ class ResultSong(models.Model):
 class Case(models.Model):
     case_id = models.AutoField(primary_key=True)
     e_i_para = models.IntegerField(default=50)
-    n_s_para = models.IntegerField(default=50)
     f_t_para = models.IntegerField(default=50)
     p_j_para = models.IntegerField(default=50)
