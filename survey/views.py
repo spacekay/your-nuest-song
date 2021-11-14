@@ -14,8 +14,7 @@ from .models import ResultSong
 
 def index(request):
     cases = Case.objects.all()
-    case_number = len(cases)
-    print(case_number)
+    case_number = len(cases)+3
     request.session['case_id'] = case_number
     return render(request, 'index.html')
 
@@ -32,17 +31,15 @@ def questions(request, qid):
 
 def choice(request):
     cid = request.POST.get("cid")
-    print(cid)
     choice_result = cid[len(cid)-1:]
     qid = int(cid[0:len(cid)-1])+1
-    print(choice_result, qid)
     case_number = request.session['case_id']
-    print(case_number)
-    this_case = Case.objects.get(case_id=case_number)
+    if qid == 2:
+        this_case = Case()
+    else:
+        this_case = Case.objects.get(case_id=case_number)
     this_choice = Choice.objects.get(choice_id=cid)
-    print(this_choice.e_i_para, this_case.e_i_para)
     this_case.e_i_para = this_case.e_i_para + this_choice.e_i_para
-    print(this_case.e_i_para)
     this_case.n_s_para = this_case.n_s_para + this_choice.n_s_para
     this_case.f_t_para = this_case.f_t_para + this_choice.f_t_para
     this_case.p_j_para = this_case.p_j_para + this_choice.p_j_para
@@ -67,7 +64,6 @@ def result(request):
     if ei == 50 and ns == 50 and ft == 50 and pj == 50:
         result_number = 2
     elif ei >= 50 and ft >= 50:
-        print("여기?")
         result_number = 1
     elif ei < 50:
         result_number = 1
@@ -79,7 +75,6 @@ def result(request):
     song_numbers = ResultSong.objects.filter(result_id=result_number).order_by('priority')
     your_song = []
     for number in song_numbers:
-        print(number)
         song = Song.objects.get(song_title=number.song_id)
         your_song.append(song)
     context = {

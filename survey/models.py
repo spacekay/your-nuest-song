@@ -56,5 +56,6 @@ class ResultSong(models.Model):
 class Case(models.Model):
     case_id = models.AutoField(primary_key=True)
     e_i_para = models.IntegerField(default=50)
+    n_s_para = models.IntegerField(default=50)
     f_t_para = models.IntegerField(default=50)
     p_j_para = models.IntegerField(default=50)
