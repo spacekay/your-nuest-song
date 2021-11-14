@@ -45,7 +45,7 @@ def choice(request):
     this_case.p_j_para = this_case.p_j_para + this_choice.p_j_para
     this_case.save()
     url = "questions/"+str(qid)
-    if qid == 3:
+    if qid == 9:
         return HttpResponseRedirect('result')
     else:
         return HttpResponseRedirect(url)
@@ -62,15 +62,17 @@ def result(request):
     result_number = 0
     # 테스트용. 순서대로 isfp enfp infp entp intp
     if ei == 50 and ns == 50 and ft == 50 and pj == 50:
+        result_number = 5
+    elif ei > 50 and ft >= 50 and ns > 50 and pj >= 50:
+        result_number = 1
+    elif ei < 50 and ft >= 50 and ns > 50 and pj >= 50:
         result_number = 2
-    elif ei >= 50 and ft >= 50:
-        result_number = 1
-    elif ei < 50:
-        result_number = 1
-    elif ei >= 50 and ft < 50:
+    elif ei > 50 and ft < 50 and ns > 50 and pj >= 50:
         result_number = 3
-    else:
+    elif ei <= 50 and ft < 50 and ns > 50 and pj >= 50:
         result_number = 4
+    else:
+        return render(request, 'error.html')
     your_result = Result.objects.get(result_id=result_number)
     song_numbers = ResultSong.objects.filter(result_id=result_number).order_by('priority')
     your_song = []
