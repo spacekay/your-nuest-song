@@ -48,10 +48,10 @@
                         <iframe src="https://www.youtube.com/embed/{{song.song_link}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <br>
                         {% endfor %}
-                        <p style="line-height:150%;">{{result.result_content|linebreaks}}</p>
+                        <p style="line-height:150%;">{{result.result_content|linebreaks}}</p><br>
                         <div style="text-align:center;padding-bottom:50px;">
                             결과가 마음에 드셨나요? <br><br>
-                        <div style="display:block;font-size:1.3em;padding-bottom:20px;">
+                        <div style="display:block;font-size:1.3em;padding-bottom:25px;">
                             <form action="../like/{{result.result_id}}" method="post" style="display:inline-block">
                                 {% csrf_token %}
                                 <input type="hidden" name="like" value="{{case.result_id}}" />
