@@ -8,8 +8,6 @@
 
 1. 초기 기능 구현 완료 (21. 11. 15.)
 2. DB 추가 및 결과별 좋아요/싫어요 기능 구현 예정 (~ 11. 30.)
-3. (new) Unit test code 작성하며 MVC 구조 기반 설계가 필요함을 확인.
-    Controller(urls), View(views) module은 이미 존재하므로 Service module 추가 제작 예정
-   (~ 11. 19.)
+3. Unit test code 작성 완료 (21. 11. 18.)
 4. (new) 본 프로젝트의 DB 구성, Frontend/Backend 구성 관련 README 정리 예정
    (~ 11. 30.)
