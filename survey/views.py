@@ -1,5 +1,3 @@
-import json
-
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
@@ -53,6 +51,7 @@ def result(request):
     ns = this_case.n_s_para
     ft = this_case.f_t_para
     pj = this_case.p_j_para
+    print(ei, ns, ft, pj, case_number)
     result_number = 0
     # 테스트용. 순서대로 isfp enfp infp entp intp isfp esfp enfj infj
     if ei == 50 and ns == 50 and ft == 50 and pj == 50:
