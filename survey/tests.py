@@ -7,7 +7,7 @@ from django.urls import resolve
 from .views import index
 from .models import Question, Choice, Case, Result, ResultSong, Song
 
-
+# Web Framework Unit Test 작성법 확인
 class RestTest(TestCase):
 
     def setUp(self):
@@ -62,7 +62,6 @@ class RestTest(TestCase):
         found_page = resolve('/')
         self.assertEqual(found_page.func, index)
 
-    # 유닛테스트 적용을 올바르게 하려면 View와 그 외 Service 로직을 최대한 분리해야 한다.
     def test_get_question_resolve(self):
         response = self.client.get('/questions/5')
         self.assertIn(b'<!DOCTYPE html>', response.content)
