@@ -142,4 +142,4 @@ cython_debug/
 secret.json
 
 #css file(preset for 3rd party template)
-survey/static/css/styles.css
+# survey/static/css/styles.css
