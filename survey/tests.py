@@ -7,6 +7,7 @@ from django.urls import resolve
 from .views import index
 from .models import Question, Choice, Case, Result, ResultSong, Song
 
+
 # Web Framework Unit Test 작성법 확인
 class RestTest(TestCase):
 

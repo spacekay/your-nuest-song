@@ -23,8 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 
-
-with open('E:/project/mytaste/yournuestsong/secret.json') as f:
+my_path = os.path.abspath(os.path.dirname(__file__))
+path = os.path.join(my_path, '../secret.json')
+with open(path) as f:
     secrets = json.loads(f.read())
 
 
