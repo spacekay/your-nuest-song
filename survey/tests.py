@@ -26,6 +26,8 @@ class RestTest(TestCase):
         # 다른 설정 안해놨으므로 모든 case parameter: 기본값 50
         case = Case(pk=20)
         case.save()
+        other_case = Case(pk=25, is_surveyed=1)
+        other_case.save()
         case = Case.objects.get(case_id=20)
 
         question = Question(pk=5)
@@ -90,3 +92,32 @@ class RestTest(TestCase):
         response = self.client.get('/result')
         self.assertIn(b'm5kOBOfoySA', response.content)
         self.assertIn(b'dx0VcSNWdBg', response.content)
+
+    def test_like_available(self):
+        session = self.session
+        session['case_id'] = 20
+        session.save()
+        response = self.client.get('/like/5')
+        self.assertTrue(response.status_code == 200)
+
+    def test_dislike_available(self):
+        session = self.session
+        session['case_id'] = 20
+        session.save()
+        response = self.client.get('/dislike/5')
+        self.assertTrue(response.status_code == 200)
+
+    def test_like_unavailable(self):
+        session = self.session
+        session['case_id'] = 25
+        session.save()
+        response = self.client.get('/like/5')
+        self.assertTrue(response.status_code == 400)
+
+    def test_dislike_unavailable(self):
+        session = self.session
+        session['case_id'] = 25
+        session.save()
+        response = self.client.get('/dislike/5')
+        self.assertTrue(response.status_code == 400)
+
