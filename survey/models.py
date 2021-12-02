@@ -37,8 +37,6 @@ class Song(models.Model):
     song_id = models.AutoField(primary_key=True)
     song_title = models.CharField(max_length=100)
     song_link = models.CharField(max_length=200)
-    song_like = models.IntegerField(default=0)
-    song_dislike = models.IntegerField(default=0)
 
     def __str__(self):
         return self.song_title
