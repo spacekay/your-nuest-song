@@ -1,5 +1,8 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
 
 from .models import Question, Case, Choice, Song, ResultSong, Result
 
@@ -84,9 +87,9 @@ def result(request):
         result_number = 13
     elif ei > 50 and ns <= 50 and ft >= 50 and pj < 50:
         result_number = 14
-    elif ei <= 50 and ns > 50 and ft < 50 and pj < 50:
-        result_number = 15
     elif ei > 50 and ns > 50 and ft < 50 and pj < 50:
+        result_number = 15
+    elif ei <= 50 and ns > 50 and ft < 50 and pj < 50:
         result_number = 16
     else:
         return render(request, 'error.html')
@@ -104,9 +107,41 @@ def result(request):
     return render(request, 'survey/result.html', context)
 
 
-def like():
-    return None
+@api_view(('GET',))
+def like(request, rid):
+    case_number = request.session['case_id']
+    this_case = Case.objects.get(case_id=case_number)
+    this_result = Result.objects.get(result_id=rid)
+    print(case_number, this_case.is_surveyed)
+
+    if this_case.is_surveyed == 0:
+        result_count = this_result.result_like
+        this_result.result_like = result_count+1
+        this_result.save()
+        this_case.is_surveyed = 1
+        this_case.save()
+        content = {'status_code': '200'}
+        return Response(content, status=status.HTTP_200_OK)
+    else:
+        content = {'status_code': '400'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
 
 
-def dislike():
-    return None
+@api_view(('GET',))
+def dislike(request, rid):
+    case_number = request.session['case_id']
+    this_case = Case.objects.get(case_id=case_number)
+    this_result = Result.objects.get(result_id=rid)
+    print(case_number, this_case.is_surveyed)
+
+    if this_case.is_surveyed == 0:
+        result_count = this_result.result_dislike
+        this_result.result_dislike = result_count + 1
+        this_result.save()
+        this_case.is_surveyed = 1
+        this_case.save()
+        content = {'status_code': '200'}
+        return Response(content, status=status.HTTP_200_OK)
+    else:
+        content = {'status_code': '400'}
+        return Response(content, status=status.HTTP_400_BAD_REQUEST)
