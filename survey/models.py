@@ -59,3 +59,4 @@ class Case(models.Model):
     n_s_para = models.IntegerField(default=50)
     f_t_para = models.IntegerField(default=50)
     p_j_para = models.IntegerField(default=50)
+    is_surveyed = models.IntegerField(default=0)
