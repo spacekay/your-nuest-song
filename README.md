@@ -39,9 +39,9 @@ https://www.youtube.com/watch?v=2-b9JK_-t00
 
 ## Frontend
 
-* Django Framework에서 기본적으로 제공하는 Django Template를 사용
-* Bootstrap 기반으로 HTML/CSS로 원하는 디자인을 구현함
-* Result page에서 결과 호불호 조사할 때에는  Ajax로 REST api 호출하여 사용
+* Django Framework에서 기본적으로 제공하는 Django Template Engine 사용
+* Bootstrap 5 기반 HTML/CSS로 원하는 디자인을 구현함
+* Result page에서 결과 호불호 조사할 때에는 Ajax로 REST api 호출하여 사용
 
 ## Backend
 
@@ -52,7 +52,7 @@ https://www.youtube.com/watch?v=2-b9JK_-t00
 ## Deployment
 
 * AWS EC2를 통하여 배포한 uWSGI, nginx 기반 실행 확인 1차 완료
-* ubuntu OS 상의 오류로 초기 설정으로 원복하였으나, 지속하여 해결 방안 고민 예정
+* 이후 진행 중 ubuntu OS 상의 오류로 초기 설정 원복하였으나, 지속하여 해결 방안 고민 예정
 
 ## History
 
