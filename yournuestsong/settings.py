@@ -44,7 +44,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     ".ap-northeast-2.compute.amazonaws.com",
-    "127.0.0.1"
+    "127.0.0.1",
+    "0,0,0,0"
 ]
 
 # Application definition
