@@ -8,7 +8,7 @@ https://www.youtube.com/watch?v=2-b9JK_-t00
 
 간단한 설문조사를 통해 사용자의 취향에 맞을 법한 가수의 노래를 추천하는 사이트.
 
-(2021. 10. 22 ~ 2021. 12. 5)
+(개발 : 2021. 10. 22 ~ 2021. 12. 5, Dockerized : 2023. 4. 12.)
 
 
 ## 사용 기술
@@ -16,6 +16,7 @@ https://www.youtube.com/watch?v=2-b9JK_-t00
 * SQLite3
 * HTML, CSS, Bootstrap 5
 * AWS EC2
+* Docker (AWS ECS - Fargate)
 
 
 
@@ -53,10 +54,12 @@ https://www.youtube.com/watch?v=2-b9JK_-t00
 
 * AWS EC2를 통하여 배포한 uWSGI, nginx 기반 실행 확인 1차 완료
 * 이후 진행 중 ubuntu OS 상의 오류로 초기 설정 원복하였으나, 지속하여 해결 방안 고민 예정
+* Docker image로 dockerize 완료. 본 repository에는 Dockerfile 업로드하지 않음.
 
 ## History
 
 1. 초기 기능 구현 완료 (21. 11. 15.)
 2. DB 추가 및 결과별 좋아요/싫어요 기능 구현 완료 (21. 12. 2.)
 3. Unit test code 작성 완료 (21. 12. 2.)
-4. 본 프로젝트의 DB 구성, Frontend/Backend 구성 관련 README 정리 (12. 5.)
+4. 본 프로젝트의 DB 구성, Frontend/Backend 구성 관련 README 정리 (21. 12. 5.)
+5. AWS ECS Fargate 실습을 위한 application dockerize (23. 4. 12.)
